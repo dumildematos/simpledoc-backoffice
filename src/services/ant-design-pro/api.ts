@@ -1,6 +1,8 @@
 // @ts-ignore
 /* eslint-disable */
 import { request } from 'umi';
+import axios from 'axios';
+import { environmentSpringBoot } from '../utils/enviroment';
 
 /** 获取当前的用户 GET /api/currentUser */
 export async function currentUser(options?: { [key: string]: any }) {
@@ -22,13 +24,19 @@ export async function outLogin(options?: { [key: string]: any }) {
 
 /** 登录接口 POST /api/login/account */
 export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
-  return request<API.LoginResult>('/api/login/account', {
+  // const springBootClient = axios.create({ url: 'http://localhost:8080/api' });
+  // let req = req
+  const url = {
+    path: '/login',
+    prefix: environmentSpringBoot.url
+  }
+  console.log(url)
+  return request<API.LoginResult>(JSON.stringify(url) , {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     data: body,
-    ...(options || {}),
   });
 }
 
