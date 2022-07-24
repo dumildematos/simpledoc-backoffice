@@ -3,7 +3,7 @@ import { Alert, message, Tabs } from 'antd';
 import React, { useState } from 'react';
 import { ProFormCheckbox, ProFormText, LoginForm } from '@ant-design/pro-form';
 import { useIntl, history, FormattedMessage, useModel } from 'umi';
-import { login } from '@/services/ant-design-pro/api';
+import { login, userDetails } from '@/services/ant-design-pro/api';
 
 import styles from './index.less';
 
@@ -45,11 +45,18 @@ const Login: React.FC = () => {
         password: values.password
       }
 
-      const msg =  login({ ...user, type });
+      const msg =  login({ ...user, type })
+      let result = await msg.then(res => {
+        console.log(res)
+        return res;
+      });
+      localStorage.setItem('access_token', JSON.stringify(result.access_token));
+      localStorage.setItem('refresh_token', JSON.stringify(result.refresh_token));
+      // console.log(result)
       
-      console.log((await msg.then(res => res)).status)
+      // console.log((await msg.then(res => res)).status)
 
-      if (msg.status === 'ok') {
+      if (result.status === 200) {
         const defaultLoginSuccessMessage = intl.formatMessage({
           id: 'pages.login.success',
           defaultMessage: '登录成功！',
@@ -61,6 +68,7 @@ const Login: React.FC = () => {
         const { query } = history.location;
         const { redirect } = query as { redirect: string };
         history.push(redirect || '/');
+        userDetails();
         return;
       }
       // console.log(msg);
@@ -103,7 +111,7 @@ const Login: React.FC = () => {
             />
           </Tabs>
 
-          {status === 'error' && loginType === 'account' && (
+          {status !== 200 && loginType === 'account' && (
             <LoginMessage
               content={intl.formatMessage({
                 id: 'pages.login.accountLogin.errorMessage',

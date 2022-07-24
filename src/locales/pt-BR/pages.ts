@@ -19,6 +19,8 @@ export default {
   'pages.login.rememberMe': 'Lembre-me',
   'pages.login.forgotPassword': 'Perdeu a Senha ?',
   'pages.login.submit': 'Enviar',
+  'pages.login.success': 'Sucesso',
+  'pages.login.failure': 'Erro',
   'pages.login.loginWith': 'Login com :',
   'pages.login.registerAccount': 'Registra Conta',
   'pages.welcome.advancedComponent': 'Componente Avançado',

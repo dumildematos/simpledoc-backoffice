@@ -4,6 +4,8 @@ import { request } from 'umi';
 import axios from 'axios';
 import { environmentSpringBoot } from '../utils/enviroment';
 
+const userToken = localStorage.getItem('access_token');
+
 /** 获取当前的用户 GET /api/currentUser */
 export async function currentUser(options?: { [key: string]: any }) {
   return request<{
@@ -26,17 +28,22 @@ export async function outLogin(options?: { [key: string]: any }) {
 export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
   // const springBootClient = axios.create({ url: 'http://localhost:8080/api' });
   // let req = req
-  const url = {
-    path: '/login',
-    prefix: environmentSpringBoot.url
-  }
-  console.log(url)
-  return request<API.LoginResult>(JSON.stringify(url) , {
+  return request<API.LoginResult>('/login' , {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     data: body,
+  });
+}
+
+export async function userDetails() {
+  return request('v1/user/me' , {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+       Authorization: `Bearer ${userToken}`,
+    }
   });
 }
 

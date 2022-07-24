@@ -209,7 +209,7 @@ const getRequestMethod = (prefix) => {
       }
       throw error;
     },
-    prefix,
+    prefix: 'http://localhost:8080/api',
     ...requestConfig,
   });
 
@@ -273,10 +273,8 @@ interface RequestMethodInUmi<R = false> {
   ): R extends true ? Promise<RequestResponse<T>> : Promise<T>;
 }
 const request: RequestMethodInUmi = (url: any, options: any) => {
-  let URI = JSON.parse(url)
-  console.log(URI)
-  const requestMethod = getRequestMethod(URI.prefix);
-  return requestMethod(URI.path, options);
+  const requestMethod = getRequestMethod();
+  return requestMethod(url, options);
 };
 
 export { request, useRequest, UseRequestProvider };
