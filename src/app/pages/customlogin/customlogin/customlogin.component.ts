@@ -52,7 +52,6 @@ export class CustomloginComponent extends NbLoginComponent {
       resp => {
         console.log(resp)
         if(resp.status === 200) {
-          this.sharedService.closeLoader();
           this.estado1 = true;
           this.estado2 = false;
           this.messagem = "Bem-vindo";
@@ -64,6 +63,7 @@ export class CustomloginComponent extends NbLoginComponent {
             res => {
               console.log(res)
               if(res) {
+                this.sharedService.closeLoader();
                 this.tokenService.setObjectItem('user', res);
                 this.router.navigate(['/pages'])
               }

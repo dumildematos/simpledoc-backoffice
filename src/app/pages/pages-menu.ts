@@ -7,25 +7,25 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
     home: true,
   },
-  {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
-    link: '/pages/iot-dashboard',
-  },
+  // {
+  //   title: 'IoT Dashboard',
+  //   icon: 'home-outline',
+  //   link: '/pages/iot-dashboard',
+  // },
   {
     title: 'FEATURES',
     group: true,
   },
   {
-    title: 'Layout',
+    title: 'Template',
     icon: 'layout-outline',
     children: [
       {
-        title: 'Stepper',
+        title: 'Categoria',
         link: '/pages/layout/stepper',
       },
       {
-        title: 'List',
+        title: 'Documento',
         link: '/pages/layout/list',
       },
       {
