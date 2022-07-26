@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NbAuthComponent } from '@nebular/auth';
+import { AuthGuard } from './pages/customlogin/auth.guard';
+import { AuthLoggedIn } from './pages/customlogin/authLoggedIn.guard';
 
 export const routes: Routes = [
   {
     path: 'pages',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
   },
   {
     path: 'auth',
+    canActivate: [AuthLoggedIn],
     component: NbAuthComponent,
     children: [
       {
@@ -23,7 +27,6 @@ export const routes: Routes = [
     ],
   },
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
 ];
 
 const config: ExtraOptions = {
