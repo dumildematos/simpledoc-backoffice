@@ -30,12 +30,12 @@ export class InfiniteListComponent {
 
     cardData.loading = true;
     cardData.placeholders = new Array(this.pageSize);
-    this.newsService.load(cardData.pageToLoadNext, this.pageSize)
-      .subscribe(nextNews => {
-        cardData.placeholders = [];
-        cardData.news.push(...nextNews);
-        cardData.loading = false;
-        cardData.pageToLoadNext++;
-      });
+    // this.newsService.load(cardData.pageToLoadNext, this.pageSize)
+    //   .subscribe(nextNews => {
+    //     cardData.placeholders = [];
+    //     cardData.news.push(...nextNews);
+    //     cardData.loading = false;
+    //     cardData.pageToLoadNext++;
+    //   });
   }
 }

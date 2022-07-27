@@ -1,0 +1,29 @@
+<nb-card>
+  <nb-card-header>Documentos </nb-card-header>
+  <nb-card-body class="card-body-create">
+    <button nbButton [status]="'primary'" [size]="'medium'" right>
+      Novo
+    </button>
+  </nb-card-body>
+</nb-card>
+
+<div class="col-md-12 col-lg-12 col-xxxl-12">
+  <nb-list
+        nbInfiniteList
+        listenWindowScroll
+        [threshold]="500"
+        (bottomThreshold)="loadNext(secondCard)">
+        <nb-list-item *ngFor="let newsPost of secondCard.news">
+          <!-- <ngx-news-post [post]="newsPost"></ngx-news-post> -->
+          2
+        </nb-list-item>
+        <nb-list-item *ngFor="let _ of secondCard.placeholders">
+          <!-- <ngx-news-post-placeholder></ngx-news-post-placeholder> -->
+          3
+        </nb-list-item>
+      </nb-list>
+</div>
+<div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+  <ngx-kitten-card></ngx-kitten-card>
+</div>
+
