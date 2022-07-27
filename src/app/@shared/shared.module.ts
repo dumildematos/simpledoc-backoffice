@@ -1,8 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NbAuthModule } from '@nebular/auth';
 import { NbActionsModule, NbAlertModule, NbButtonModule, NbCardModule, NbCheckboxModule, NbDatepickerModule, NbIconModule, NbInputModule, NbRadioModule, NbSelectModule, NbUserModule } from '@nebular/theme';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ThemeModule } from '../@theme/theme.module';
 
 
@@ -23,8 +25,9 @@ import { ThemeModule } from '../@theme/theme.module';
     NbSelectModule,
     NbIconModule,
     NbAlertModule,
-    NbAuthModule
-
+    NbAuthModule,
+    Ng2SmartTableModule,
+    HttpClientModule
   ]
 })
 export class SharedModule { }

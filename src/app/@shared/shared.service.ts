@@ -14,7 +14,7 @@ export class SharedService {
 
   index = 1;
   destroyByClick = true;
-  duration = 2000;
+  duration = 3000;
   hasIcon = true;
   position: NbGlobalPosition = NbGlobalPhysicalPosition.TOP_RIGHT;
   preventDuplicates = false;
@@ -85,6 +85,33 @@ export class SharedService {
       body,
       `${titleContent}`,
       config);
+  }
+
+  tokenExpired(): void {
+    setTimeout(() => {
+      localStorage.clear();
+      this.router.navigate(['/auth']);
+    }, 2500)
+  }
+
+  confirmDelete(callback): void {
+
+    Swal.fire({
+      title: 'Tem a certeza?',
+      text: "Não será capaz de reverter isto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if(callback) {
+          callback(result.isConfirmed);
+        }
+      }
+    })
+
   }
 
 }

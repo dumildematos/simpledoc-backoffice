@@ -22,7 +22,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Categoria',
-        link: '/pages/layout/stepper',
+        link: '/pages/categoria/list',
       },
       {
         title: 'Documento',

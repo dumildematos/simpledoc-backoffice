@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NbAuthSocialLink, NbLoginComponent } from '@nebular/auth';
-
+import { NbLoginComponent } from '@nebular/auth';
+import {
+  NbComponentStatus
+} from '@nebular/theme';
 import { SharedService } from '../../../@shared/shared.service';
 import { CustomloginService } from '../customlogin.service';
 import { UserLogin } from '../model/User';
@@ -61,15 +63,28 @@ export class CustomloginComponent extends NbLoginComponent {
 
           this.customloginService.userDetails().subscribe(
             res => {
-              console.log(res)
               if(res) {
-                this.sharedService.closeLoader();
-                this.tokenService.setObjectItem('user', res);
-                this.router.navigate(['/pages'])
+                let hasAdminRole = res.roles.filter(role => role.name === 'ROLE_ADMIN');
+                if(hasAdminRole.length > 0) {
+                  this.sharedService.closeLoader();
+                  this.tokenService.setObjectItem('user', res);
+                  this.router.navigate(['/pages'])
+                }else {
+                  this.sharedService.closeLoader();
+                  let status: NbComponentStatus = 'danger';
+                  this.sharedService.showToast(status, 'Erro', 'Não possui permissão para efetuar o login no backoffice');
+                  this.estado2 = false;
+                  this.estado1 = true;
+                  this.messagem = "Não possui permissão para efetuar o login no backoffice";
+                }
               }
             },
             e => {
-
+              this.sharedService.closeLoader();
+              let status: NbComponentStatus = 'danger';
+              this.sharedService.showToast(status, 'Erro', e.error.error_message);
+              this.sharedService.tokenExpired();
+              // console.log(error)
             }
           )
 
