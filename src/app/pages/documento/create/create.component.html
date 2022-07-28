@@ -1,0 +1,51 @@
+<nb-card>
+  <nb-card-header>{{ title }}</nb-card-header>
+  <nb-card-body>
+    <form #form="ngForm">
+      <div class="form-group">
+        <label for="nameInput" class="label">Nome</label>
+        <input type="text" required [(ngModel)]="documento.name" name="name" nbInput fullWidth id="nameInput" placeholder="Name">
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="priceInput" class="label">Preço</label>
+            <input type="text" required nbInput name="price" [(ngModel)]="documento.price"fullWidth id="priceInput" placeholder="0">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="categoryInput" class="label">Categoria</label> <br/>
+            <nb-select fullWidth selected="0" name="categoryId" id="categoryInput" [(ngModel)]="documento.categoryId">
+              <nb-option value="0">Selecione</nb-option>
+              <nb-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</nb-option>
+            </nb-select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="descriptionInput" class="label">Descrição</label>
+            <textarea required id="descriptionInput" name="description" nbInput fullWidth [(ngModel)]="documento.description"placeholder="Message"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <!-- [styles]="editorStyle" placeholder="Enter Text" [modules]="config" -->
+          <ngx-quill #editor [options]="options" (ready)="onEditorCreated($event)"></ngx-quill>
+        </div>
+      </div>
+
+      <!-- <button type="submit" nbButton status="danger">Submit</button> -->
+    </form>
+  </nb-card-body>
+  <nb-card-footer class="nd-footer">
+    <button class="cancel" nbButton hero  status="danger" (click)="dismiss()">Cancel</button>
+    <button nbButton hero status="primary" (click)="submit()">Salvar</button>
+  </nb-card-footer>
+</nb-card>

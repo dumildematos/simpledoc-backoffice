@@ -6,7 +6,7 @@ import { NbAuthModule } from '@nebular/auth';
 import { NbActionsModule, NbAlertModule, NbButtonModule, NbCardModule, NbCheckboxModule, NbDatepickerModule, NbIconModule, NbInputModule, NbListModule, NbRadioModule, NbSelectModule, NbUserModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ThemeModule } from '../@theme/theme.module';
-
+import { NgxQuillModule } from '@dimpu/ngx-quill'
 
 
 @NgModule({
@@ -28,7 +28,8 @@ import { ThemeModule } from '../@theme/theme.module';
     NbAuthModule,
     Ng2SmartTableModule,
     NbListModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxQuillModule
   ]
 })
 export class SharedModule { }

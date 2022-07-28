@@ -1,0 +1,16 @@
+@import '../../../@theme/styles/themes.scss';
+
+@include nb-install-component() {
+  nb-card {
+    width: 1000px;
+    max-width: 1000px;
+    max-height: 500px;
+  }
+  .nd-footer{
+    display: flex;
+    justify-content: flex-end;
+    .cancel {
+      margin-right: 1rem;
+    }
+  }
+}

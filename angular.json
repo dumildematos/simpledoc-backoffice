@@ -125,7 +125,9 @@
               "node_modules/tinymce/plugins/table/plugin.min.js",
               "node_modules/echarts/dist/echarts.min.js",
               "node_modules/echarts/dist/extension/bmap.min.js",
-              "node_modules/chart.js/dist/Chart.min.js"
+              "node_modules/chart.js/dist/Chart.min.js",
+              "node_modules/@ quill/dist/quill.js",
+              "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -136,6 +138,10 @@
               "node_modules/socicon/css/socicon.css",
               "node_modules/nebular-icons/scss/nebular-icons.scss",
               "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
+              "node_modules/quill/dist/quill.core.css",
+              "node_modules/quill/dist/quill.snow.css",
+              "https://cdn.quilljs.com/1.2.2/quill.snow.css",
+              "https://cdn.quilljs.com/1.2.2/quill.bubble.css",
               "src/app/@theme/styles/styles.scss"
             ],
             "assets": [

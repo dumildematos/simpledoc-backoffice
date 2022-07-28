@@ -62,8 +62,8 @@ export class CustomloginComponent extends NbLoginComponent {
           this.tokenService.setToken('refresh_token', resp.refresh_token);
 
           this.customloginService.userDetails().subscribe(
-            res => {
-              if(res) {
+            {
+              next: (res: any) =>  {
                 let hasAdminRole = res.roles.filter(role => role.name === 'ROLE_ADMIN');
                 if(hasAdminRole.length > 0) {
                   this.sharedService.closeLoader();
@@ -77,14 +77,17 @@ export class CustomloginComponent extends NbLoginComponent {
                   this.estado1 = true;
                   this.messagem = "Não possui permissão para efetuar o login no backoffice";
                 }
-              }
-            },
-            e => {
-              this.sharedService.closeLoader();
+              },
+              error: (error: any) => {
+                this.sharedService.closeLoader();
               let status: NbComponentStatus = 'danger';
-              this.sharedService.showToast(status, 'Erro', e.error.error_message);
-              this.sharedService.tokenExpired();
-              // console.log(error)
+              if(error.error.error_message.includes('The Token has expired')){
+                this.sharedService.showToast(status, 'Erro', error.error.error_message);
+                this.sharedService.tokenExpired();
+              }else {
+                this.sharedService.showToast(status, 'Erro', error.error.error_message);
+              }
+              }
             }
           )
 

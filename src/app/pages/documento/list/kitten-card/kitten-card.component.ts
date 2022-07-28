@@ -1,5 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import { DocumentoAction, DocumentoDetail } from '../../model/documento';
+
 
 @Component({
   selector: 'ngx-kitten-card',
@@ -7,6 +9,14 @@ import { NbThemeService } from '@nebular/theme';
   styleUrls: ['./kitten-card.component.scss']
 })
 export class KittenCardComponent implements OnInit, OnDestroy {
+
+  @Input() documento: DocumentoDetail;
+  @Output() action = new EventEmitter<DocumentoAction>();
+  docmentoAction: DocumentoAction = {
+    documento: null,
+    operation: null
+  }
+
 
   currentTheme: string;
   themeSubscription: any;
@@ -23,4 +33,13 @@ export class KittenCardComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.themeSubscription.unsubscribe();
   }
+
+  operation(action: string): void {
+    this.docmentoAction = {
+      documento: this.documento,
+      operation: action
+    }
+    this.action.emit(this.docmentoAction);
+  }
+
 }

@@ -2,7 +2,7 @@ import { Pageable, Sort } from "../../../@shared/model/request";
 
 export interface Categoria {
     id?: number;
-    name: string;
+    name?: string;
 };
 
 export interface CategoriaListResult {

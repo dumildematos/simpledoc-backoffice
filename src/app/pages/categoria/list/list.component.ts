@@ -58,8 +58,12 @@ export class ListComponent implements OnInit {
       error: (error) => {
         this.sharedService.closeLoader();
         let status: NbComponentStatus = 'danger';
-        this.sharedService.showToast(status, 'Erro', error.error.error_message);
-        this.sharedService.tokenExpired();
+        if(error.error.error_message.includes('The Token has expired')){
+          this.sharedService.showToast(status, 'Erro', error.error.error_message);
+          this.sharedService.tokenExpired();
+        }else {
+          this.sharedService.showToast(status, 'Erro', error.error.error_message);
+        }
       }
     })
   }
@@ -78,8 +82,12 @@ export class ListComponent implements OnInit {
           error: (error) => {
             this.sharedService.closeLoader();
             let status: NbComponentStatus = 'danger';
-            this.sharedService.showToast(status, 'Erro', error.error.error_message);
-            this.sharedService.tokenExpired();
+            if(error.error.error_message.includes('The Token has expired')){
+              this.sharedService.showToast(status, 'Erro', error.error.error_message);
+              this.sharedService.tokenExpired();
+            }else {
+              this.sharedService.showToast(status, 'Erro', error.error.error_message);
+            }
           }
         })
       }else {
@@ -107,8 +115,16 @@ export class ListComponent implements OnInit {
           error: (error) => {
             this.sharedService.closeLoader();
             let status: NbComponentStatus = 'danger';
-            this.sharedService.showToast(status, 'Erro', error.error.error_message);
-            this.sharedService.tokenExpired();
+            if(error.error.error_message.includes('The Token has expired')){
+              if(error.error.error_message.includes('The Token has expired')){
+                this.sharedService.showToast(status, 'Erro', error.error.error_message);
+                this.sharedService.tokenExpired();
+              }else {
+                this.sharedService.showToast(status, 'Erro', error.error.error_message);
+              }
+            }else {
+              this.sharedService.showToast(status, 'Erro', error.error.error_message);
+            }
           }
         });
       }else {
@@ -137,8 +153,12 @@ export class ListComponent implements OnInit {
           error: (error) => {
             this.sharedService.closeLoader();
             let status: NbComponentStatus = 'danger';
-            this.sharedService.showToast(status, 'Erro', error.error.error_message);
-            this.sharedService.tokenExpired();
+            if(error.error.error_message.includes('The Token has expired')){
+              this.sharedService.showToast(status, 'Erro', error.error.error_message);
+              this.sharedService.tokenExpired();
+            }else {
+              this.sharedService.showToast(status, 'Erro', error.error.error_message);
+            }
           }
         });
       }else {
