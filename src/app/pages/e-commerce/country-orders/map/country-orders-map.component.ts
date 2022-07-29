@@ -51,6 +51,7 @@ export class CountryOrdersMapComponent implements OnDestroy {
         this.currentTheme = config.variables.countryOrders;
         this.layers = [this.createGeoJsonLayer(cords)];
         this.selectFeature(this.findFeatureLayerByCountryId(this.countryId));
+        // this.selectFeature(this.findFeatureLayerByCountryId('USA'));
       });
   }
 

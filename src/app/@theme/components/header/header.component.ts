@@ -3,10 +3,11 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 
 import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
-import { map, takeUntil } from 'rxjs/operators';
+import { filter, map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { UserDetail } from '../../../pages/customlogin/model/User';
 import { TokenService } from '../../../pages/customlogin/token-service.service';
+import { SharedService } from '../../../@shared/shared.service';
 
 @Component({
   selector: 'ngx-header',
@@ -40,15 +41,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  userMenu = [ { title: 'Profile' }, { title: 'Sair' } ];
+  tag = 'ngx-header';
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private tokenService: TokenService,
               private themeService: NbThemeService,
-              private userService: UserData,
+              private sharedService: SharedService,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService) {
+
+      this.menuService.onItemClick().pipe(
+      filter(({ tag }) => tag === this.tag))
+      .subscribe(bag => bag.item.title === 'Sair' ? this.sharedService.tokenExpired() : '')
   }
 
   ngOnInit() {
@@ -97,4 +103,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.menuService.navigateHome();
     return false;
   }
+
+  onMenuItemClick() {
+
+  };
+
 }
