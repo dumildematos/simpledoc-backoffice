@@ -27,6 +27,18 @@
 
       <div class="row">
         <div class="col-md-12">
+          <label for="coverInput" class="label">Cover</label> <br/>
+          {{ selectedFileName }}
+          <div class="fileUpload blue-btn btn width100">
+            <span>Upload: <b>até 500 MB</b></span>
+            <input type="file" class="uploadcover" value="" id="myFile" name="cover"
+              (change)="fileEvent($event)" accept=".jpg,.png,.jpeg" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
           <div class="form-group">
             <label for="descriptionInput" class="label">Descrição</label>
             <textarea required id="descriptionInput" name="description" nbInput fullWidth [(ngModel)]="documento.description"placeholder="Message"></textarea>

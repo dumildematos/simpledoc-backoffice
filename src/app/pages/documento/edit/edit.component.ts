@@ -31,6 +31,7 @@ export class EditComponent implements OnInit, AfterViewInit {
   quill: any;
   documento: Documento;
   categories: Categoria [];
+  selectedFileName: string;
 
   constructor(protected ref: NbDialogRef<EditComponent>, private sharedService: SharedService, private categoriaService: CategoriaService) {}
 
@@ -86,7 +87,7 @@ export class EditComponent implements OnInit, AfterViewInit {
         content: JSON.stringify(this.editor.getContents()),
         price: this.documento.price + '.00',
         description: this.documento.description,
-        cover: this.documento.description,
+        cover: this.documento.cover,
         categoryId: this.documento.categoryId
       };
       this.ref.close(newDocumento);
@@ -104,6 +105,17 @@ export class EditComponent implements OnInit, AfterViewInit {
   onEditorCreated(quill) {
     quill.updateContents(JSON.parse(this.documentoAction.documento.content));
     this.editor = quill;
+  }
+
+  fileEvent(event) {
+    this.documento.cover = event.target.files[0];
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    this.selectedFileName = file.name;
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.documento.cover = String(reader.result);
+    };
   }
 
 }
