@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NbComponentStatus } from '@nebular/theme';
 import { SharedService } from '../../../@shared/shared.service';
 import { TokenService } from '../../customlogin/token-service.service';
@@ -16,7 +17,9 @@ export class ListComponent implements OnInit {
   size: number = 9999;
   equipes: Equipe [];
 
-  constructor(private equipeService: EquipeService, private sharedService: SharedService, private tokenService: TokenService) { }
+  constructor(private equipeService: EquipeService, private sharedService: SharedService, private tokenService: TokenService, private title: Title) { 
+    this.title.setTitle('SimpleDoc | Backoffice :: Equipe')
+  }
 
   ngOnInit() {
     this.list();

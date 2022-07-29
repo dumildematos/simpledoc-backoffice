@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NbLoginComponent } from '@nebular/auth';
 import {
@@ -18,7 +19,7 @@ interface Login {
   templateUrl: './customlogin.component.html',
   styleUrls: ['./customlogin.component.scss']
 })
-export class CustomloginComponent extends NbLoginComponent {
+export class CustomloginComponent extends NbLoginComponent implements OnInit {
 
   redirectDelay: number;
   showMessages: any;
@@ -39,8 +40,13 @@ export class CustomloginComponent extends NbLoginComponent {
     private sharedService: SharedService,
     private tokenService: TokenService,
     protected router: Router,
+    private title: Title
     ) {
     super(null, null, null, null);
+  }
+
+  ngOnInit(): void {
+    this.title.setTitle('SimpleDoc | Backoffice :: Login');
   }
 
 

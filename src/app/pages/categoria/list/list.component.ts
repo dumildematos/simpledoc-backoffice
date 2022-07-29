@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NbComponentStatus } from '@nebular/theme';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../@core/data/smart-table';
@@ -41,8 +42,8 @@ export class ListComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private categoriaService: CategoriaService, private sharedService: SharedService) {
-
+  constructor(private categoriaService: CategoriaService, private sharedService: SharedService, private title: Title) {
+    this.title.setTitle('SimpldeDoc | Backoffice :: Categoria')
   }
   ngOnInit() {
     this.listCategories();

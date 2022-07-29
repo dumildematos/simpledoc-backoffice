@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NbComponentStatus, NbDialogService } from '@nebular/theme';
 import { SharedService } from '../../../@shared/shared.service';
 import { NewsService } from '../../layout/news.service';
@@ -27,10 +28,12 @@ export class ListComponent implements OnInit {
 
   docs: DocumentListResult;
 
-  constructor(private newsService: NewsService,
+  constructor(private  title: Title,
     private documentoService: DocumentoService,
     private sharedService: SharedService,
-    private dialogService: NbDialogService) { }
+    private dialogService: NbDialogService) {
+      this.title.setTitle('SimpleDoc | Backoffice :: Documento')
+    }
 
   ngOnInit() {
     this.listDocs();
