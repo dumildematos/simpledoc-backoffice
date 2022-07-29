@@ -34,9 +34,9 @@ const routes: Routes = [{
         .then(m => m.EquipeModule),
     },
     {
-      path: 'forms',
-      loadChildren: () => import('./forms/forms.module')
-        .then(m => m.FormsModule),
+      path: 'usuario',
+      loadChildren: () => import('./usuario/usuario.module')
+        .then(m => m.UsuarioModule),
     },
     {
       path: 'ui-features',

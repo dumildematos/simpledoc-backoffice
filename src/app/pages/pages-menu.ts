@@ -68,11 +68,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Usuário',
     icon: 'person-outline',
-    link: '/pages/ui-features',
+    link: '/pages/usuario',
     children: [
       {
         title: 'Detlhe de Usuário',
-        link: '/pages/ui-features/grid',
+        link: '/pages/usuario/list',
       },
       // {
       //   title: 'Icons',
