@@ -34,6 +34,7 @@ export class CreateComponent implements OnInit {
     categoryId: null,
   };
   categories: Categoria [];
+  selectedFileName: string = null;
 
   constructor(protected ref: NbDialogRef<CreateComponent>, private sharedService: SharedService, private categoriaService: CategoriaService) {}
 
@@ -72,7 +73,7 @@ export class CreateComponent implements OnInit {
         content: JSON.stringify(this.editor.getContents()),
         price: this.documento.price + '.00',
         description: this.documento.description,
-        cover: this.documento.description,
+        cover: this.documento.cover,
         categoryId: this.documento.categoryId,
       };
       this.ref.close(newDocumento);
@@ -85,7 +86,19 @@ export class CreateComponent implements OnInit {
 
   onEditorCreated(quill) {
     this.editor = quill;
-    console.log(quill)
   }
+
+  fileEvent(event) {
+    this.documento.cover = event.target.files[0];
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    this.selectedFileName = file.name;
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.documento.cover = String(reader.result);
+    };
+  }
+
+
 
 }
