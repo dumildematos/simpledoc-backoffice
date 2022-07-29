@@ -1,0 +1,25 @@
+<nb-card size="medium">
+  <div class="picture" style.background-image="url('{{equipe.banner}}')"></div>
+
+  <div class="details">
+    <div class="h4">
+      {{ equipe.name }}
+      <nb-icon *ngIf="equipe.type === 'PRIVATE'" icon="lock-outline" pack="eva"></nb-icon>
+      <nb-icon *ngIf="equipe.type === 'PUBLIC'" icon="globe-2-outline" pack="eva"></nb-icon>
+    </div>
+    <div class="description">{{ equipe.description }}</div>
+  </div>
+
+  <nb-card-footer>
+    <nb-actions size="medium" fullWidth>
+      <nb-action>
+        <nb-icon class="action-icon" icon="file-text-outline"></nb-icon>
+        <span> {{ equipe.documents.length }}</span>
+      </nb-action>
+      <nb-action>
+        <nb-icon class="action-icon" icon="people-outline"></nb-icon>
+        <span> {{ equipe.contributors.length }}</span>
+      </nb-action>
+    </nb-actions>
+  </nb-card-footer>
+</nb-card>

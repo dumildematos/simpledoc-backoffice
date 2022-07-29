@@ -29,9 +29,9 @@ const routes: Routes = [{
       .then(m => m.DocumentoModule),
     },
     {
-      path: 'layout',
-      loadChildren: () => import('./layout/layout.module')
-        .then(m => m.LayoutModule),
+      path: 'equipe',
+      loadChildren: () => import('./equipe/equipe.module')
+        .then(m => m.EquipeModule),
     },
     {
       path: 'forms',

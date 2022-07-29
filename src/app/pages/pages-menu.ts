@@ -49,7 +49,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Equipes de Utilizadores',
-        link: '/pages/forms/inputs',
+        link: '/pages/equipe/list',
       },
       // {
       //   title: 'Form Layouts',
