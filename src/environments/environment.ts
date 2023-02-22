@@ -10,6 +10,6 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:8080/api',
+  url: 'https://simpledoc-web-api.onrender.com/api',
   version: 'v1'
 };

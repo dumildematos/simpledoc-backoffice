@@ -1,12 +1,12 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
-  {
+  /*{
     title: 'Dashboard',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',
     home: true,
-  },
+  },*/
   // {
   //   title: 'IoT Dashboard',
   //   icon: 'home-outline',
@@ -88,7 +88,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       // },
     ],
   },
-  {
+  /*{
     title: 'Central de notificação',
     icon: 'bell-outline',
     children: [
@@ -113,7 +113,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       //   link: '/pages/modal-overlays/tooltip',
       // },
     ],
-  },
+  },*/
   // {
   //   title: 'Extra Components',
   //   icon: 'message-circle-outline',

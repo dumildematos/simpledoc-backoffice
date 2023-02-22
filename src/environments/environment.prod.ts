@@ -5,6 +5,6 @@
  */
 export const environment = {
   production: true,
-  url: 'https://simpledoc-io.herokuapp.com/api',
+  url: 'https://simpledoc-web-api.onrender.com/api',
   version: 'v1'
 };
